@@ -1,0 +1,12 @@
+App to show relation on transaction lvl between clients.
+Entieties:
+Client (client id, name, surname, nationality, birth day, current location, place of birth)
+Transaction (transaction id, amount of transaction, currency, reason string)
+Adding data:
+1. Clients
+2. Transactions
+Features:
+1. Aggregate transactions for client with id x: incoming, outcoming, balance.
+2. Show transaction between two clients with ids x and y.
+3. Show incoming transaction for client with id x from clients with some: nationalities, younger than x, locations, places of birth.
+4. Show only transactions bigger than x and smaller than y.
