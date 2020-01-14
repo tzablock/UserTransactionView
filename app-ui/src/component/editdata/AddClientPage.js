@@ -1,25 +1,50 @@
 import React from 'react';
-import { Field, reduxForm } from 'react-redux-form'
+import { Field, reduxForm } from 'redux-form'
 
 class AddClientPage extends React.Component {
-    handleSubmit = form => {
-        console.log(form)
-    }
+    handleSubmit = form => this.props.addClient(form);
     render(){
-        return <AddClientForm handleSubmit={this.handleSubmit}/>
+        return <AddClientForm onSubmit={this.handleSubmit}/>  // must be onSubmit
     }
 }
 
 //Client (client id, name, surname, nationality, birth day, current location, place of birth)
 let AddClientForm = props => {
-return <form onSubmit={this.props.handleSubmit}>
+    const { handleSubmit } = props;  // need to have name handleSubmit
+    return (
+    <form onSubmit={ handleSubmit }>
            <div>
                <label>Client ID</label>
-               <Field name="clientId" component="input" type="text"/>
+               <Field name="client_id" component="input" type="text"/>
            </div>
-       </form>
-}
+           <div>
+               <label>Client Name</label>
+               <Field name="name" component="input" type="text"/>
+           </div>
+           <div>
+               <label>Client Surname</label>
+               <Field name="surname" component="input" type="text"/>
+           </div>
+           <div>
+               <label>Client Nationality</label>
+               <Field name="nationality" component="input" type="text"/>
+           </div>
+           <div>
+               <label>Client Birth Day</label>
+               <Field name="birth_date" component="input" type="text"/>
+            </div>
+            <div>
+               <label>Client Current Location</label>
+               <Field name="current_location" component="input" type="text"/>
+            </div>
+            <div>
+               <label>Client Place Of Birth</label>
+               <Field name="place_of_birth" component="input" type="text"/>
+           </div>
+        <button type="submit">Submit</button>
+       </form>)
+};
 
-AddClientForm = reduxForm({form: 'addClient'})(AddClientForm)
+AddClientForm = reduxForm({form: 'addClient'})(AddClientForm);
 
 export default AddClientPage

@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import AddClientPage from './component/editdata/AddClientPage';
+import AddClientPageRedux from "./container/editdata/AddClientPage";
 
 function App() {
   return (
-      <AddClientPage/>
-  );
+      <AddClientPageRedux/>
+  )
 }
 
 export default App;
