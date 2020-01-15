@@ -4,14 +4,16 @@ import { Field, reduxForm } from 'redux-form'
 class AddClientPage extends React.Component {
     handleSubmit = form => this.props.addClient(form);
     render(){
-        return <AddClientForm onSubmit={this.handleSubmit}/>  // must be onSubmit
+        return <AddClientForm onSubmit={this.handleSubmit} insertClientResult={this.props.insertClientResult}/>  // must be onSubmit
     }
 }
 
 //Client (client id, name, surname, nationality, birth day, current location, place of birth)
 let AddClientForm = props => {
     const { handleSubmit } = props;  // need to have name handleSubmit
+    const { insertClientResult } = props;
     return (
+        <div>
     <form onSubmit={ handleSubmit }>
            <div>
                <label>Client ID</label>
@@ -42,7 +44,10 @@ let AddClientForm = props => {
                <Field name="place_of_birth" component="input" type="text"/>
            </div>
         <button type="submit">Submit</button>
-       </form>)
+       </form>
+            <b>{insertClientResult}</b>
+        </div>
+    )
 };
 
 AddClientForm = reduxForm({form: 'addClient'})(AddClientForm);

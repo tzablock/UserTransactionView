@@ -14,17 +14,14 @@ import const.Queries._
  */
 @Singleton
 class DataController @Inject()(db: Database, val controllerComponents: ControllerComponents) extends BaseController {
-  def index() = Action { implicit request: Request[AnyContent] =>
-    db.withConnection { conn =>
-      val stmt = conn.createStatement()
-      val rs = stmt.executeQuery("MATCH (c:Client)-[t]-(c1) RETURN c,t,c1")
-      while(rs.next()){
-        val res = rs.getObject("c")
-      }
-    }
-    Ok("Work")
-  }
 
+  //Add transaction two clients ids
+
+  //Get diagram with clients and transactions
+
+  //get list of possible clients to add transaction
+
+  //Add id uniques
 //Client (client id, name, surname, nationality, birth day, current location, place of birth)
   def clientInsert() = Action { implicit request: Request[AnyContent] =>
     request.body.asJson.get.validate[Client].fold(
@@ -34,7 +31,7 @@ class DataController @Inject()(db: Database, val controllerComponents: Controlle
           val stmt = conn.createStatement()
           stmt.executeQuery(CLIENT_INSERT_QUERY.apply(client))
         }
-        Ok("New client inserted.")
+        Ok(s"Client with id: ${client.client_id} inserted.")
       }
     )
   }

@@ -10,4 +10,4 @@ object Client {
   implicit val fmt = Json.format[Client]
 }
 //Transaction (transaction_id, amount_of_transaction, currency, reason)
-case class Transaction(transaction_id: String, amount_of_transaction: Int, currency: String, reason: String)
+case class Transaction(transaction_id: String, amount_of_transaction: Int, currency: String, reason: String, client_id_from: String, client_id_to: String)
